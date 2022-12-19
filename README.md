@@ -2,15 +2,11 @@
 
 A new Flutter project.
 
-## Getting Started
+## Step 1 - Project Description
 
-This project is a starting point for a Flutter application.
+### Target Users
+This app will target users in the 18-40 age range. It is intended to be used by technological savvy
+individuals, who will be expecting something easy-to-use. We are targeting home cooks, professional
+cooks, and everything in-between that has an interest in creating food. 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Key Tasks
