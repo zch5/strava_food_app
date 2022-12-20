@@ -13,4 +13,4 @@ cooks, and everyone in-between that has an interest in creating food.
 1. Users interacting with other users through following
 2. User profile pages with statistics and user information
 3. Users uploading content, possibly importing recipe content, tbd
-4. Users showing own and friends posts through a homepage
+4. Users viewing own and friends posts through a homepage
