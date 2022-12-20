@@ -16,3 +16,4 @@ cooks, and everyone in-between that has an interest in creating food.
 4. Users viewing own and friends posts through a homepage
 5. Ability for users to create and join groups
 6. Ability for users to create and join challenges 
+7. Darkmode :)
