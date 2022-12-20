@@ -16,4 +16,8 @@ cooks, and everyone in-between that has an interest in creating food.
 4. Users viewing own and friends posts through a homepage
 5. Ability for users to create and join groups
 6. Ability for users to create and join challenges 
-7. Darkmode :)
+
+### Minor Featues
+1. Dark mode
+2. KOMs for making a recipe many times
+3. Post meal classification (breakfast, lunch, dinner) in a similar manner to Strava's workout/commute tag
