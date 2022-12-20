@@ -14,3 +14,5 @@ cooks, and everyone in-between that has an interest in creating food.
 2. User profile pages with statistics and user information
 3. Users uploading content, possibly importing recipe content, tbd
 4. Users viewing own and friends posts through a homepage
+5. Ability for users to create and join groups
+6. Ability for users to create and join challenges 
