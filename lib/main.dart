@@ -1,8 +1,12 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:strava_food_app/theme/theme_parent.dart';
+import 'package:strava_food_app/views/authentication_pages/authentication_page_view.dart';
+import 'package:strava_food_app/views/authentication_pages/verify_email_page_view.dart';
+import 'package:strava_food_app/views/utilities.dart';
 
 import 'firebase_options.dart';
 
@@ -16,6 +20,8 @@ Future main() async {
   runApp(const MyApp());
 }
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -26,11 +32,22 @@ class MyApp extends StatelessWidget {
       stream: isDarkTheme.stream,
       builder: (context, snapshot) {
         return MaterialApp(
+          scaffoldMessengerKey: Utilities.messengerKey,
+          navigatorKey: navigatorKey,
           title: 'Strava Food App',
           theme: ThemeParent().getTheme(snapshot.data!),
           home: Scaffold(
             appBar: AppBar(title: Text('hello')),
-            body: SettingPage(),
+            body: StreamBuilder<User?>(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return VerifyEmailPageView();
+                } else {
+                  return AuthenticationPageView();
+                }
+              },
+            ),
           )
         );
       },
@@ -57,6 +74,15 @@ class SettingPage extends StatelessWidget {
                   onPressed: () {
                     isDarkTheme.add(true);
                   }),
-            ])));
+              ElevatedButton.icon(
+                icon: Icon(Icons.arrow_back, size: 3,),
+                label: Text(
+                  'Sign Out',
+                ),
+                onPressed: () => FirebaseAuth.instance.signOut(),
+              )
+            ]),
+        ),
+    );
   }
 }
