@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:strava_food_app/routing/router.dart' as local_router;
+import 'package:strava_food_app/routing/router_constants.dart';
 import 'package:strava_food_app/theme/theme_parent.dart';
-import 'package:strava_food_app/views/authentication_pages/authentication_page_view.dart';
-import 'package:strava_food_app/views/authentication_pages/verify_email_page_view.dart';
 import 'package:strava_food_app/views/utilities.dart';
 
 import 'firebase_options.dart';
@@ -36,19 +36,8 @@ class MyApp extends StatelessWidget {
           navigatorKey: navigatorKey,
           title: 'Strava Food App',
           theme: ThemeParent().getTheme(snapshot.data!),
-          home: Scaffold(
-            appBar: AppBar(title: Text('hello')),
-            body: StreamBuilder<User?>(
-              stream: FirebaseAuth.instance.authStateChanges(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return VerifyEmailPageView();
-                } else {
-                  return AuthenticationPageView();
-                }
-              },
-            ),
-          )
+          onGenerateRoute: local_router.Router.generateRoute,
+          initialRoute: startRoute,
         );
       },
     );

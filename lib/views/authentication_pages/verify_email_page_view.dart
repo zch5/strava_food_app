@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:strava_food_app/views/utilities.dart';
 
-import '../../main.dart';
+import '../skeleton_pages/bottom_navigation_bar_view.dart';
 
 class VerifyEmailPageView extends StatefulWidget {
   @override
@@ -64,7 +64,7 @@ class _VerifyEmailPageViewState extends State<VerifyEmailPageView>{
 
   @override
   Widget build(BuildContext context) => isEmailVerified
-      ? SettingPage()
+      ? BottomNavigationBarView()
       : Scaffold(
         appBar: AppBar(
           title: Text('Verify Email'),
