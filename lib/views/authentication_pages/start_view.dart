@@ -14,6 +14,7 @@ class StartView extends StatelessWidget {
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
+          //if (snapshot.hasData && snapshot.data!.refreshToken != null && snapshot.data!.refreshToken!.isNotEmpty) {
           if (snapshot.hasData) {
             return VerifyEmailPageView();
           } else {

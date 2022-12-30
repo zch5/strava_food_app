@@ -32,6 +32,8 @@ class AppBarSkeleton extends StatelessWidget implements PreferredSizeWidget {
         indicatorColor: Theme.of(context).colorScheme.outline,
         tabs: tabs!,
       ),
+      actionsIconTheme: Theme.of(context).iconTheme,
+      iconTheme: Theme.of(context).iconTheme,
     );
   }
 

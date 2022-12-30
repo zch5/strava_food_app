@@ -19,7 +19,19 @@ class _CreatePageView extends State<CreatePageView> {
             icon: Icon(
               Icons.post_add
             ),
-            label: Text('Label'))
+            label: Text('Post')),
+          ElevatedButton.icon(
+              onPressed: null,
+              icon: Icon(
+                  Icons.post_add
+              ),
+              label: Text('Challange')),
+          ElevatedButton.icon(
+              onPressed: null,
+              icon: Icon(
+                  Icons.post_add
+              ),
+              label: Text('Recipe'))
         ],
       ),
     );

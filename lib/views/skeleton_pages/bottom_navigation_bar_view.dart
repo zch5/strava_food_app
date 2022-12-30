@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:strava_food_app/views/skeleton_pages/challanges_page_view.dart';
+import 'package:strava_food_app/views/skeleton_pages/profile_page_view.dart';
 
 import '../../theme/global_styles.dart';
 import 'dart:math' as math;
@@ -23,7 +24,7 @@ class _BottomNavigationBarView extends State<BottomNavigationBarView> {
     ChallangesPageView(),
     CreatePageView(),
     Text('Recipe page'),
-    Text('Profile page'),
+    ProfilePageView(),
   ];
 
   @override

@@ -1,2 +1,2 @@
-// Authentication pages
 const String startRoute = '/';
+const String settingsRoute = '/settings';

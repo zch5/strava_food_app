@@ -52,7 +52,7 @@ class _loginPageViewState extends State<LoginPageView> {
           style: ElevatedButton.styleFrom(
             minimumSize: Size.fromHeight(50),
           ),
-          icon: Icon(Icons.lock_open, size: 32,),
+          icon: Icon(Icons.login, size: 32,),
           label: Text(
             'Sign In',
           ),

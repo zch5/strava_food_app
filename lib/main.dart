@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:strava_food_app/routing/router.dart' as local_router;
@@ -11,6 +10,7 @@ import 'package:strava_food_app/views/utilities.dart';
 import 'firebase_options.dart';
 
 StreamController<bool> isDarkTheme = StreamController();
+bool _isDarkMode = false;
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,23 +53,23 @@ class SettingPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Center(
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              ElevatedButton(
-                  child: Text("Light Theme", style: TextStyle(color: Colors.white)),
+              IconButton(
                   onPressed: () {
-                    isDarkTheme.add(false);
-                  }),
-              ElevatedButton(
-                  child: Text("Dark Theme", style: TextStyle(color: Colors.white)),
-                  onPressed: () {
-                    isDarkTheme.add(true);
-                  }),
-              ElevatedButton.icon(
-                icon: Icon(Icons.arrow_back, size: 3,),
-                label: Text(
-                  'Sign Out',
-                ),
-                onPressed: () => FirebaseAuth.instance.signOut(),
-              )
+                    _isDarkMode = !_isDarkMode;
+                    isDarkTheme.add(_isDarkMode);
+                  },
+                  icon: _isDarkMode ? Icon(Icons.light_mode) : Icon(Icons.dark_mode)
+              ),
+              // ElevatedButton(
+              //     child: Text("Light Theme"),
+              //     onPressed: () {
+              //       isDarkTheme.add(false);
+              //     }),
+              // ElevatedButton(
+              //     child: Text("Dark Theme"),
+              //     onPressed: () {
+              //       isDarkTheme.add(true);
+              //     }),
             ]),
         ),
     );
