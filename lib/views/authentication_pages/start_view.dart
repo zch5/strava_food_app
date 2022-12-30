@@ -6,12 +6,11 @@ import 'package:strava_food_app/views/authentication_pages/verify_email_page_vie
 import 'authentication_page_view.dart';
 
 class StartView extends StatelessWidget {
-  const StartView({super.key});
+  StartView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('hello')),
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {

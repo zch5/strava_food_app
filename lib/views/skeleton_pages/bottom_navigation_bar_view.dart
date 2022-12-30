@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:strava_food_app/views/skeleton_pages/challanges_page_view.dart';
 
 import '../../theme/global_styles.dart';
 import 'dart:math' as math;
 
+import 'create_page_view.dart';
+import 'home_page_view.dart';
+
 class BottomNavigationBarView extends StatefulWidget {
-  const BottomNavigationBarView({super.key});
+  BottomNavigationBarView({super.key});
 
   @override
   State<BottomNavigationBarView> createState() => _BottomNavigationBarView();
@@ -14,9 +18,10 @@ class _BottomNavigationBarView extends State<BottomNavigationBarView> {
   int _selectedIndex = 0;
 
   final List<Widget> _widgetOptions = <Widget>[
-    Text('Home page'),
-    Text('Challanges page'),
-    Text('Create page'),
+    //Text('Home page'),
+    HomePageView(),
+    ChallangesPageView(),
+    CreatePageView(),
     Text('Recipe page'),
     Text('Profile page'),
   ];

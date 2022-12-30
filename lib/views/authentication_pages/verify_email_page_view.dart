@@ -7,6 +7,8 @@ import 'package:strava_food_app/views/utilities.dart';
 import '../skeleton_pages/bottom_navigation_bar_view.dart';
 
 class VerifyEmailPageView extends StatefulWidget {
+  VerifyEmailPageView({super.key});
+
   @override
   _VerifyEmailPageViewState createState() => _VerifyEmailPageViewState();
 }
