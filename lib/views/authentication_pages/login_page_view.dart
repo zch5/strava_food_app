@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:strava_food_app/main.dart';
 import 'package:strava_food_app/views/utilities.dart';
 
-import 'forgot_password_page_view.dart';
+import '../authentication_pages/forgot_password_page_view.dart';
 
 class LoginPageView extends StatefulWidget {
   final VoidCallback onClickedSignUp;

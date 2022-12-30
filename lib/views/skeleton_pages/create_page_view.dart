@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:strava_food_app/routing/router_constants.dart';
 
 class CreatePageView extends StatefulWidget {
   const CreatePageView({super.key});
@@ -7,7 +8,6 @@ class CreatePageView extends StatefulWidget {
 }
 
 class _CreatePageView extends State<CreatePageView> {
-  // TODO: Implement overlay here
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -15,7 +15,9 @@ class _CreatePageView extends State<CreatePageView> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton.icon(
-            onPressed: null,
+            onPressed: () {
+              Navigator.pushNamed(context, createPostRoute);
+            },
             icon: Icon(
               Icons.post_add
             ),
