@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../viewmodels/create_pages/create_post_page_view_model.dart';
 
 import '../shared_pages/app_bar_skeleton.dart';
@@ -34,7 +35,6 @@ class _CreatePostPageViewState extends State<CreatePostPageView> {
         actions: [
           ElevatedButton.icon(
             onPressed: () {
-              titleController.
               context.read<CreatePostPageViewModel>().createPost(titleController.text, descriptionController.text);
               Navigator.pop(context);
             },

@@ -20,11 +20,15 @@ class SignUpPageView extends StatefulWidget {
 
 class _SignUpPageViewState extends State<SignUpPageView> {
   final formKey = GlobalKey<FormState>();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -46,6 +50,22 @@ class _SignUpPageViewState extends State<SignUpPageView> {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 40),
+          TextFormField(
+              controller: firstNameController,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(labelText: 'First Name'),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) => value != null && value.length < 3
+                  ? 'Enter minimum 3 characters' : null
+          ),
+          TextFormField(
+              controller: lastNameController,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(labelText: 'Last Name'),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) => value != null && value.length < 3
+                  ? 'Enter minimum 3 characters' : null
+          ),
           TextFormField(
             controller: emailController,
             textInputAction: TextInputAction.next,
@@ -115,6 +135,8 @@ class _SignUpPageViewState extends State<SignUpPageView> {
           email: emailController.text.trim(),
           password: passwordController.text.trim()
       );
+      String displayName = '${firstNameController.text.trim()} ${lastNameController.text.trim()}';
+      FirebaseAuth.instance.currentUser?.updateDisplayName(displayName);
     } on FirebaseAuthException catch (e) {
       print(e);
 
