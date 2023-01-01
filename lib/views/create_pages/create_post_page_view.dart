@@ -74,6 +74,20 @@ class _CreatePostPageViewState extends State<CreatePostPageView> {
                     ? 'Enter a valid title' : null,
               ),
             ),
+          ),
+          Container(
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: null,
+                  icon: Icon(Icons.image)
+                ),
+                IconButton(
+                    onPressed: null,
+                    icon: Icon(Icons.menu_book)
+                ),
+              ],
+            ),
           )
         ],
       ),

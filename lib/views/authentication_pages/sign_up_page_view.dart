@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:strava_food_app/database_paths.dart';
 
 import '../../../main.dart';
 import '../utilities.dart';
@@ -136,7 +138,8 @@ class _SignUpPageViewState extends State<SignUpPageView> {
           password: passwordController.text.trim()
       );
       String displayName = '${firstNameController.text.trim()} ${lastNameController.text.trim()}';
-      FirebaseAuth.instance.currentUser?.updateDisplayName(displayName);
+      await FirebaseAuth.instance.currentUser?.updateDisplayName(displayName);
+      createUser();
     } on FirebaseAuthException catch (e) {
       print(e);
 
@@ -144,5 +147,14 @@ class _SignUpPageViewState extends State<SignUpPageView> {
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
+  }
+  
+  Future createUser() async {
+    final db = FirebaseFirestore.instance;
+    db.collection(USERS).doc(FirebaseAuth.instance.currentUser!.uid).set({
+      'account_created_timestamp': FieldValue.serverTimestamp(),
+      'display_name': FirebaseAuth.instance.currentUser!.displayName,
+      'email': FirebaseAuth.instance.currentUser!.email,
+    });
   }
 }
