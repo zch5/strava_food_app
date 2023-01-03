@@ -1,10 +1,9 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../storage_service.dart';
 import '../../viewmodels/create_pages/create_post_page_view_model.dart';
-
 import '../shared_pages/app_bar_skeleton.dart';
+import '../shared_pages/media_view.dart';
 
 class CreatePostPageView extends StatefulWidget {
   const CreatePostPageView({super.key});
@@ -30,7 +29,6 @@ class _CreatePostPageViewState extends State<CreatePostPageView> {
 
   @override
   Widget build(BuildContext context) {
-    final Storage storage = Storage();
     return Scaffold(
       appBar: AppBarSkeleton(
         title: 'Add Post',
@@ -99,8 +97,8 @@ class _CreatePostPageViewState extends State<CreatePostPageView> {
 
                       final path = results?.files.single.path!;
                       final fileName = results?.files.single.name;
-
-                      storage.uploadFile(path!, fileName!).then((value) => print('done'));
+                      context.read<CreatePostPageViewModel>().addImage(path!, fileName!);
+                      //storage.uploadFile(path!, fileName!).then((value) => print('done'));
                     },
                     icon: Icon(Icons.image)
                 ),
@@ -110,7 +108,10 @@ class _CreatePostPageViewState extends State<CreatePostPageView> {
                 ),
               ],
             ),
-          )
+          ),
+          Container(
+              child: MediaView(),
+          ),
         ],
       ),
     );
