@@ -21,7 +21,22 @@ class _MediaView extends State<MediaView> {
             children: [
               Container(
                 padding: const EdgeInsets.all(16.0),
-                child: Image.network(context.watch<CreatePostPageViewModel>().images[i]),
+                child: Image.network(
+                  context.watch<CreatePostPageViewModel>().imageStorage[i],
+                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                  },
+                ),
               ),
               Visibility(
                 child: Container(
